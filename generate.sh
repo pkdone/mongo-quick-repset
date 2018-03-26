@@ -11,9 +11,9 @@ mkdir -p env/r0/log env/r1/log env/r2/log
 mv _gitignore env/.gitignore
 
 # Start the 3 MongoDB replicas then just wait for a few secs for servers to start
-$MONGODB_BIN/mongod --replSet TestRS --port 27000 --dbpath env/r0 --fork --logpath env/r0/log/mongod.log --smallfiles --oplogSize 128
-$MONGODB_BIN/mongod --replSet TestRS --port 27001 --dbpath env/r1 --fork --logpath env/r1/log/mongod.log --smallfiles --oplogSize 128
-$MONGODB_BIN/mongod --replSet TestRS --port 27002 --dbpath env/r2 --fork --logpath env/r2/log/mongod.log --smallfiles --oplogSize 128
+$MONGODB_BIN/mongod --replSet TestRS --port 27000 --dbpath env/r0 --fork --logpath env/r0/log/mongod.log
+$MONGODB_BIN/mongod --replSet TestRS --port 27001 --dbpath env/r1 --fork --logpath env/r1/log/mongod.log
+$MONGODB_BIN/mongod --replSet TestRS --port 27002 --dbpath env/r2 --fork --logpath env/r2/log/mongod.log
 sleep 3
 
 # Connect to first replica with Mongo Shell and configre the Replica Set containing the 3 replicas
@@ -29,4 +29,4 @@ echo
 echo "Mongo Shell command to connect to replica set:"
 echo
 echo "$MONGODB_BIN/mongo mongodb://localhost:27000,localhost:27001,localhost:27002/?replicaSet=TestRS"
-echo 
+echo
