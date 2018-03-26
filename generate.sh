@@ -1,14 +1,12 @@
 #/bin/sh
 MONGODB_BIN=/opt/mongodb/mongodb-linux-x86_64-enterprise-ubuntu1604-3.6.3/bin
 
-# Clean up any old env
+# Clean up any old environment
 killall mongod && sleep 3
-mv env/.gitignore ./_gitignore
-rm -rf env
+rm -rf env/r0 env/r1 env/r2
 
-# Create DB file directories for each replica
+# Create DB file & log directories for each replica
 mkdir -p env/r0/log env/r1/log env/r2/log
-mv _gitignore env/.gitignore
 
 # Start the 3 MongoDB replicas then just wait for a few secs for servers to start
 $MONGODB_BIN/mongod --replSet TestRS --port 27000 --dbpath env/r0 --fork --logpath env/r0/log/mongod.log
