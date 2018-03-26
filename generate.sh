@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 MONGODB_BIN=/opt/mongodb/mongodb-linux-x86_64-enterprise-ubuntu1604-3.6.3/bin
 
 # Clean up any old environment
